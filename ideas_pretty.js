@@ -3,12 +3,7 @@ var adminId = "RNbayr89KquiYmAva";
 
 if (Meteor.isServer) {
   Meteor.publish("ideas", function () {
-    return Ideas.find({
-      $or: [
-        {owner: this.userId },
-        {writer: this.userId}
-      ]
-    });
+    return Ideas.find({});
   });
 
   Meteor.methods({
