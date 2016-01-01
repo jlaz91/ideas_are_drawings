@@ -1,0 +1,54 @@
+<head>
+  <title>Sometimes My Ideas are Drawings</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Sometimes My Ideas Are Drawings {{#if isAdmin}}- Admin{{/if}}</h1>
+
+      {{> loginButtons}}
+
+      {{#if isAdmin}}
+        <form class="ui form new-idea">
+          <div class="field">
+            <input type="text" name="text" placeholder="Add ideas here..." />
+          </div>
+        </form>
+      {{/if}}
+
+    </header>
+
+    {{#if isAdmin}}
+      <h2>All yo ideas!</h2>
+    {{else}}
+    <div class="ui one column centered grid">
+      <div class="column"></div>
+        <button class="massive ui button buy">Buy an idea* for $1</button>
+    </div>
+      <h2>Purchased Ideas</h2>
+    {{/if}}
+
+      <div class="ui three stackable cards">
+          {{#each ideas}}
+            {{> idea}}
+          {{/each}}
+      </div>
+  </div>
+</body>
+
+<template name="idea">
+      <div class="card">
+        <div class="content">
+          <div class="header">{{#if isAdmin}}{{username}}{{/if}}</div>
+          <div class="meta">{{#if isAdmin}}Admin{{/if}}</div>
+          <div class="description">
+             {{text}}
+          </div>
+        </div>
+        <div class="ui bottom attached button delete">
+          <i class="remove icon"></i>
+          delete
+        </div>
+      </div>
+</template>
